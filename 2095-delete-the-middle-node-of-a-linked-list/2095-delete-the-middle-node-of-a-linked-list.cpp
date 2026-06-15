@@ -16,17 +16,33 @@ public:
         head->next=NULL;
         return head; 
       }
-      ListNode* temp=head;
-      int len=0;
-      while(temp!=NULL){
-        len++;
-        temp=temp->next;
-      } 
-        temp=head;
-        for(int i=0;i<(len/2)-1;i++){
-            temp=temp->next;
-        }
-        temp->next=temp->next->next;
-        return head;  
+    //  ListNode* temp=head;
+    //   int len=0;
+    //   while(temp!=NULL){
+    //     len++;
+    //     temp=temp->next;
+    //   } 
+    ListNode* slow=head;
+    ListNode* fast=head;
+    ListNode* prev=NULL;
+    while(fast!=NULL && fast->next!=NULL){
+        prev=slow;
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    // while(temp->next!=slow){
+    //     temp=temp->next;
+    // }
+    // if(temp->next!=NULL){
+    // temp->next=temp->next->next;
+    // }
+    prev->next=slow->next;
+        // temp=head;
+        // for(int i=0;i<(len/2)-1;i++){
+        //     temp=temp->next;
+        // }
+        // temp->next=temp->next->next;
+        // return head; 
+        return head; 
     }
 };
