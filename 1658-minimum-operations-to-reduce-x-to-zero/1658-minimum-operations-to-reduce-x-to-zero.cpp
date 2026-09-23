@@ -10,7 +10,7 @@ public:
       }
       if(sum==x) return n;
       int t=sum-x;
-      if(t<=0) return -1;
+      if(t<0) return -1;
       int temp=0;
       int a=0;
       i=0;
