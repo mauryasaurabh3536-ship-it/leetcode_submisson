@@ -11,24 +11,24 @@
  */
 class Solution {
 public:
-    void insert(TreeNode* root, int val){
-        if(root==NULL) root=new TreeNode(val);  
-        else if(root->val<val) {
-        if(root->right==NULL){
-        root->right=new TreeNode(val);
+    TreeNode* insertIntoBST(TreeNode* root, int key) {
+        if(root==NULL) return new TreeNode(key);
+        if(root->val>key){
+            if(root->left ==NULL){
+                TreeNode* temp=new TreeNode(key);
+                root->left=temp;
+                return root;
+            }
+            else insertIntoBST(root->left,key);
         }
-        else insert(root->right,val);
-    }
         else{
-        if(root->left==NULL){
-        root->left=new TreeNode(val);
+            if(root->right ==NULL){
+                TreeNode* temp=new TreeNode(key);
+                root->right=temp;
+                return root;
+            }
+            else insertIntoBST(root->right,key);
         }
-        else insert(root->left,val);
-    }
-    }
-    TreeNode* insertIntoBST(TreeNode* root, int val) {
-        insert(root,val);
-        if(root==NULL) root=new TreeNode(val);
         return root;
     }
 };
