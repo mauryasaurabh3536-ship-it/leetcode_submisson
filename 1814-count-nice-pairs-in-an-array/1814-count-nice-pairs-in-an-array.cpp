@@ -12,12 +12,12 @@ public:
     int countNicePairs(vector<int>& nums) {
         unordered_map<int,int>m;
         for(int i=0;i<nums.size();i++){
-            int x=(nums[i]-rev(nums[i]));
-            m[x]++;
+            nums[i]-=rev(nums[i]);
         }
         long long count=0;
-        for(auto x : m){
-           count+=((long long)(x.second)*((long long)(x.second-1)))/2;
+        for(int i=0;i<nums.size();i++){
+            if(m.find(nums[i])!=m.end()) count+=m[nums[i]];
+            m[nums[i]]++;
         }
         return count%1000000007;
     }
